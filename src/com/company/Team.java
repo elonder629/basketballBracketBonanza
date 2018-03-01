@@ -9,9 +9,9 @@ public class Team {
     public int games;
     public String id;
 
-    public Team(int pts, int ptsAgainst, String idVal) {
-        pointsFor = pts;
-        pointsAgainst = ptsAgainst;
+    public Team(String idVal) {
+        pointsFor = 0;
+        pointsAgainst = 0;
         games = 0;
         id = idVal;
     }
