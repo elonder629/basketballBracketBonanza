@@ -15,4 +15,9 @@ public class statsEvaluator {
         return points +(0.4*fieldGoals)- (0.7*FGA) - (0.4*(FTA - FT)) + (0.7 * ORB) + ()
     }
 
+    public double fantasyBasketball(int WFGM, int WFGM3, int WFTM, int WOR, int WDR, int WAst, int WStl, int WBlk, int WTO){
+        double sum = (WFGM * 2) + (WFGM3 * 3) + WFTM + ((WOR + WDR) * 1.2) + (WAst * 1.5) + (WStl * 3) + (WBlk * 3) + (WTO * -1);
+        return sum;
+    }
+
 }
