@@ -5,7 +5,7 @@ package com.company;
  */
 public class statsEvaluator {
 
-    public statsEvaluator(){
+    public statsEvaluator() {
 
     }
 
