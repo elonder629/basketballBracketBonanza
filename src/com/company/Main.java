@@ -4,25 +4,28 @@ import java.util.*;
 import java.io.*;
 public class Main {
 
+    public static ArrayList<Team> teams = new ArrayList<Team>();
+    public static ArrayList<String> teamIDs = new ArrayList<String>();
+
     public static void main(String[] args) throws IOException {
         System.out.println("LETS GET READY TO RUMBLE");
-        Scanner scanner = new Scanner(new File("RegularSeasonCompactResults.tsv"));
-        ArrayList<Team> teams = new ArrayList<Team>();
-        ArrayList<String> teamIDs = new ArrayList<String>();
+        Scanner scanner = new Scanner(new File("RegularSeasonCompaq.tsv"));
         boolean flag = false;
-        while(scanner.hasNext()) {
+        while(scanner.hasNextLine()) {
             if(!flag) {
                 flag = true;
                 continue;
             }
             String line = scanner.nextLine();
             Scanner scanner2 = new Scanner(line);
+            scanner2.useDelimiter("\t");
             if (scanner2.next().equals("2017")) {
                 break;
             }
             scanner2.next();
             String winningTeam = scanner2.next();
             int winScore = scanner2.nextInt();
+            System.out.println(winScore);
             String losingTeam = scanner2.next();
             int lossScore = scanner2.nextInt();
             if (!teamIDs.contains(winningTeam)) {
