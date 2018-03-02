@@ -10,10 +10,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println("LETS GET READY TO RUMBLE");
         Scanner scanner = new Scanner(new File("RegularSeasonCompaq.tsv"));
-        boolean flag = false;
+        boolean flag = true;
         while(scanner.hasNextLine()) {
-            if(!flag) {
-                flag = true;
+            if (flag) {
+                scanner.nextLine();
+                flag = false;
                 continue;
             }
             String line = scanner.nextLine();
@@ -25,7 +26,6 @@ public class Main {
             scanner2.next();
             String winningTeam = scanner2.next();
             int winScore = scanner2.nextInt();
-            System.out.println(winScore);
             String losingTeam = scanner2.next();
             int lossScore = scanner2.nextInt();
             if (!teamIDs.contains(winningTeam)) {
