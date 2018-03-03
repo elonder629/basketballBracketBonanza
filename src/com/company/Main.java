@@ -9,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         System.out.println("LETS GET READY TO RUMBLE");
-        Scanner scanner = new Scanner(new File("RegularSeasonCompaq.tsv"));
+        Scanner scanner = new Scanner(new File("RegularSeasonCompactResults.tsv"));
         boolean flag = true;
         while(scanner.hasNextLine()) {
             if (flag) {
