@@ -15,7 +15,7 @@ public class Team {
         pointsAgainst = 0;
         games = 0;
         id = idVal;
-        elo = 1000;
+        elo = 1500;
     }
 
     public double pointsPercentage() {
