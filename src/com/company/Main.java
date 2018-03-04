@@ -28,18 +28,30 @@ public class Main {
             int winScore = scanner2.nextInt();
             String losingTeam = scanner2.next();
             int lossScore = scanner2.nextInt();
+            char loc = scanner2.next().charAt(0);
+            Team w;
+            Team l;
             if (!teamIDs.contains(winningTeam)) {
-                teams.add(new Team(winningTeam));
-                teams.get(teams.size()-1).pointsFor += winScore;
-                teams.get(teams.size()-1).pointsAgainst += lossScore;
+                w = new Team(winningTeam);
+                teams.add(w);
+                w.pointsFor += winScore;
+                w.pointsAgainst += lossScore;
             } else {
-                teams.get(teamIDs.indexOf(winningTeam)).pointsFor += winScore;
-                teams.get(teamIDs.indexOf(winningTeam)).pointsAgainst += lossScore;
+                w = teams.get(teamIDs.indexOf(winningTeam));
+                w.pointsFor += winScore;
+                w.pointsAgainst += lossScore;
             }
             if (!teamIDs.contains(losingTeam)) {
-                teams.add(new Team(losingTeam));
-                teams.get(teams.size()-1).pointsFor += lossScore;
+                l = new Team(losingTeam);
+                teams.add(l);
+                l.pointsFor += lossScore;
+                l.pointsAgainst += winScore;
+            } else {
+                l = teams.get(teamIDs.indexOf(losingTeam));
+                l.pointsFor += lossScore;
+                l.pointsAgainst += winScore;
             }
+            Elo.applyEloChange(w, winScore, l, lossScore, loc);
         }
     }
 }

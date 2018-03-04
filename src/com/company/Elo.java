@@ -9,7 +9,7 @@ public class Elo {
 
     }
 
-    public static void calculateEloChange(Team winningTeam, int winScore, Team losingTeam, int lossScore, char homeCourt) {
+    public static void applyEloChange(Team winningTeam, int winScore, Team losingTeam, int lossScore, char homeCourt) {
         double wElo = winningTeam.elo;
         double lElo = losingTeam.elo;
         if (homeCourt == 'W') {
