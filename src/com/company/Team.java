@@ -10,6 +10,7 @@ public class Team {
     public String id;
     public int elo;
     public String name;
+    public double scoreOfEvluator
 
     public Team(String teamName, String idVal) {
         pointsFor = 0;
