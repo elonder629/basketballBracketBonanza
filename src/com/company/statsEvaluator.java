@@ -8,16 +8,12 @@ import java.util.DoubleSummaryStatistics;
  */
 public class statsEvaluator {
 
-    public static double pythagoreanPercentageCalc(int pointsFor, int pointsAgainst, int gamesPlayed){
-        return gamesPlayed*(Math.pow(pointsFor,16.5)/(Math.pow(pointsFor,16.5) + Math.pow(pointsAgainst,16.5)));
+    public static double pythagoreanPercentageCalc(int pointsFor, int pointsAgainst, int gamesPlayed) {
+        return gamesPlayed*(Math.pow(pointsFor, 16.5)/(Math.pow(pointsFor, 16.5) + Math.pow(pointsAgainst, 16.5)));
     }
 
-    public static double gameScoreCalc(int points, int fieldGoals
-            , int FGA, int FT, int FTA, int ORB, int DRB, int steals
-            , int assists, int blocks, int personalFouls, int turnovers){
-        return points +(0.4*fieldGoals)- (0.7*FGA) - (0.4*(FTA - FT))
-                + (0.7 * ORB) + (0.3 * DRB) + steals + (0.7 * assists)
-                + (0.7 * blocks) - (0.4 * personalFouls) - turnovers;
+    public static double gameScoreCalc(int points, int fieldGoals, int FGA, int FT, int FTA, int ORB, int DRB, int steals, int assists, int blocks, int personalFouls, int turnovers) {
+        return points +(0.4*fieldGoals)- (0.7*FGA) - (0.4*(FTA - FT)) + (0.7 * ORB) + (0.3 * DRB) + steals + (0.7 * assists) + (0.7 * blocks) - (0.4 * personalFouls) - turnovers;
     }
 
     public static double fantasyBasketball(int WFGM, int WFGM3, int WFTM, int WOR, int WDR, int WAst, int WStl, int WBlk, int WTO){
@@ -30,31 +26,24 @@ public class statsEvaluator {
     2 == fantasy basketball
      */
 
-    public static void ranking(int calctype){
+    public static void ranking(int calctype, Team x){
         if (calctype ==  0) {
-            for (Team x : Main.teams) {
-                x.scoreOfEvluator = pythagoreanPercentageCalc(x.pointsFor, x.pointsAgainst, x.games);
-            }
+            x.scoreOfEvluator = pythagoreanPercentageCalc(x.pointsFor, x.pointsAgainst, x.games);
         }
-        else if (calctype == 1){
-            for (Team x : Main.teams) {
-              //  x.scoreOfEvluator = gameScoreCalc()
-            }
+        else if (calctype == 1) {
+            //  x.scoreOfEvluator = gameScoreCalc()
         }
-        else if (calctype == 2){
-            for (Team x : Main.teams) {
-                //x.scoreOfEvluator = fantasyBasketball()
-            }
+        else if (calctype == 2) {
+            //x.scoreOfEvluator = fantasyBasketball()
         }
-        Main.teams.sort( (team1, team2) ->
-                Double.compare(team2.scoreOfEvluator, team1.scoreOfEvluator));
+        //Main.teams.sort((team1, team2) -> Double.compare(team2.scoreOfEvluator, team1.scoreOfEvluator));
+        Main.teams.sort((team1, team2) -> Integer.compare(team2.elo, team1.elo));
 
     }
 
     public static void rankPrint(){
         for (int x = 0; x < Main.teams.size(); x++) {
-            System.out.println(x + Main.teams.get(x).id);
+            System.out.println(x+1 + ": " + Main.teams.get(x).name + " - " + Main.teams.get(x).elo);
         }
     }
-
 }

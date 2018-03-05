@@ -59,6 +59,7 @@ public class Main {
                 w = teams.get(teamIDs.indexOf(winningTeam));
                 w.pointsFor += winScore;
                 w.pointsAgainst += lossScore;
+                w.games++;
             //}
             /*if (!teamIDs.contains(losingTeam)) {
                 l = new Team(losingTeam);
@@ -69,9 +70,14 @@ public class Main {
                 l = teams.get(teamIDs.indexOf(losingTeam));
                 l.pointsFor += lossScore;
                 l.pointsAgainst += winScore;
+                l.games++;
             //}
             Elo.applyEloChange(w, winScore, l, lossScore, loc);
         }
         scanner.close();
+        for (int i=0; i<teams.size(); i++) {
+            statsEvaluator.ranking(0, teams.get(i));
+        }
+        statsEvaluator.rankPrint();
     }
 }
