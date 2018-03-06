@@ -46,4 +46,38 @@ public class statsEvaluator {
             System.out.println(x+1 + ": " + Main.teams.get(x).name + " - " + Main.teams.get(x).elo);
         }
     }
+
+    public static void predictBracket() {
+        for (int i=0; i<Main.bracket.size(); i++) {
+            if (i%2 == 0) {
+                Team team1 = Main.bracket.get(i-1);
+                Team team2 = Main.bracket.get(i);
+                if (team1.elo > team2.elo) {
+                    System.out.println(team1.name + " beats " + team2.name);
+                    Main.bracket.set(i, null);
+                } else if (team1.elo < team2.elo) {
+                    System.out.println(team2.name + " beats " + team1.name);
+                    Main.bracket.set(i-1, null);
+                } else {
+                    if (Math.random() >= .5) {
+                        Main.bracket.set(i, null);
+                        System.out.println(team1.name + " beats " + team2.name);
+                    } else {
+                        System.out.println(team2.name + " beats " + team1.name);
+                        Main.bracket.set(i-1, null);
+                    }
+                }
+            }
+        }
+        System.out.println(" ");
+        for (int i=0; i<Main.bracket.size(); i++) {
+            if (Main.bracket.get(i) == null) {
+                Main.bracket.remove(i);
+                i--;
+            }
+        }
+        if (Main.bracket.size() != 1) {
+            predictBracket();
+        }
+    }
 }

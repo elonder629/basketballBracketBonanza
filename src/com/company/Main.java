@@ -6,6 +6,7 @@ public class Main {
 
     public static ArrayList<Team> teams = new ArrayList<Team>();
     public static ArrayList<String> teamIDs = new ArrayList<String>();
+    public static ArrayList<Team> bracket = new ArrayList<Team>();
 
     public static void main(String[] args) throws IOException {
         System.out.println("LETS GET READY TO RUMBLE");
