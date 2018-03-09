@@ -20,6 +20,7 @@ public class statsEvaluator {
         double sum = (WFGM * 2) + (WFGM3 * 3) + WFTM + ((WOR + WDR) * 1.2) + (WAst * 1.5) + (WStl * 3) + (WBlk * 3) + (WTO * -1);
         return sum;
     }
+
     /*
     0 == pythagorean
     1 == Game score calc
@@ -37,7 +38,7 @@ public class statsEvaluator {
             //x.scoreOfEvluator = fantasyBasketball()
         }
         //Main.teams.sort((team1, team2) -> Double.compare(team2.scoreOfEvluator, team1.scoreOfEvluator));
-        Main.teams.sort((team1, team2) -> Integer.compare(team2.elo, team1.elo));
+        //Main.teams.sort((team1, team2) -> Integer.compare(team2.elo, team1.elo));
 
     }
 
@@ -58,22 +59,26 @@ public class statsEvaluator {
 
     public static void predictBracket() {
         for (int i=0; i<Main.bracket.size(); i++) {
-            if (i%2 == 0) {
+            if (i%2 == 1) {
                 Team team1 = Main.bracket.get(i-1);
                 Team team2 = Main.bracket.get(i);
                 if (team1.elo > team2.elo) {
                     System.out.println(team1.name + " beats " + team2.name);
                     Main.bracket.set(i, null);
+                    Elo.bracketElo(team1, team2, 'N');
                 } else if (team1.elo < team2.elo) {
                     System.out.println(team2.name + " beats " + team1.name);
                     Main.bracket.set(i-1, null);
+                    Elo.bracketElo(team2, team1, 'N');
                 } else {
                     if (Math.random() >= .5) {
                         Main.bracket.set(i, null);
                         System.out.println(team1.name + " beats " + team2.name);
+                        Elo.bracketElo(team1, team2, 'N');
                     } else {
                         System.out.println(team2.name + " beats " + team1.name);
                         Main.bracket.set(i-1, null);
+                        Elo.bracketElo(team2, team1, 'N');
                     }
                 }
             }

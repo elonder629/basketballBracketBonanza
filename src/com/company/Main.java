@@ -80,42 +80,83 @@ public class Main {
             statsEvaluator.ranking(0, teams.get(i));
         }
         statsEvaluator.rankPrint();
+        populateBracket2016();
+        statsEvaluator.predictBracket();
     }
 
-    public static void populateBracket() {
+    public static void populateBracket2016() {
         //This is very messy. I know.
-        bracket.add(teams.get(teamIDs.indexOf("1242")));
-        bracket.add(teams.get(teamIDs.indexOf("1122")));
-        bracket.add(teams.get(teamIDs.indexOf("1160")));
-        bracket.add(teams.get(teamIDs.indexOf("1163")));
-        bracket.add(teams.get(teamIDs.indexOf("1268")));
-        bracket.add(teams.get(teamIDs.indexOf("1377")));
-        bracket.add(teams.get(teamIDs.indexOf("1143")));
-        bracket.add(teams.get(teamIDs.indexOf("1218")));
-        bracket.add(teams.get(teamIDs.indexOf("1112")));
-        bracket.add(teams.get(teamIDs.indexOf("1455")));
-        bracket.add(teams.get(teamIDs.indexOf("1274")));
-        bracket.add(teams.get(teamIDs.indexOf("1138")));
-        bracket.add(teams.get(teamIDs.indexOf("1234")));
-        bracket.add(teams.get(teamIDs.indexOf("1396")));
-        bracket.add(teams.get(teamIDs.indexOf("1437")));
-        bracket.add(teams.get(teamIDs.indexOf("1421")));
-        bracket.add(teams.get(teamIDs.indexOf("1332")));
-        bracket.add(teams.get(teamIDs.indexOf("1221")));
-        bracket.add(teams.get(teamIDs.indexOf("1386")));
-        bracket.add(teams.get(teamIDs.indexOf("1153")));
-        bracket.add(teams.get(teamIDs.indexOf("1124")));
-        bracket.add(teams.get(teamIDs.indexOf("1463")));
-        bracket.add(teams.get(teamIDs.indexOf("1181")));
-        bracket.add(teams.get(teamIDs.indexOf("1423")));
-        bracket.add(teams.get(teamIDs.indexOf("1400")));
-        bracket.add(teams.get(teamIDs.indexOf("1320")));
-        bracket.add(teams.get(teamIDs.indexOf("1401")));
-        bracket.add(teams.get(teamIDs.indexOf("1453")));
-        bracket.add(teams.get(teamIDs.indexOf("1333")));
-        bracket.add(teams.get(teamIDs.indexOf("1433")));
-        bracket.add(teams.get(teamIDs.indexOf("1328")));
-        bracket.add(teams.get(teamIDs.indexOf("1167")));
-        //need to finish east and midwest
+
+        //South Division
+        bracket.add(teams.get(teamIDs.indexOf("1242"))); //1
+        bracket.add(teams.get(teamIDs.indexOf("1122"))); //16
+        bracket.add(teams.get(teamIDs.indexOf("1160"))); //8
+        bracket.add(teams.get(teamIDs.indexOf("1163"))); //9
+        bracket.add(teams.get(teamIDs.indexOf("1268"))); //5
+        bracket.add(teams.get(teamIDs.indexOf("1377"))); //12
+        bracket.add(teams.get(teamIDs.indexOf("1143"))); //4
+        bracket.add(teams.get(teamIDs.indexOf("1218"))); //13
+        bracket.add(teams.get(teamIDs.indexOf("1112"))); //6
+        bracket.add(teams.get(teamIDs.indexOf("1455"))); //11
+        bracket.add(teams.get(teamIDs.indexOf("1274"))); //3
+        bracket.add(teams.get(teamIDs.indexOf("1138"))); //14
+        bracket.add(teams.get(teamIDs.indexOf("1234"))); //7
+        bracket.add(teams.get(teamIDs.indexOf("1396"))); //10
+        bracket.add(teams.get(teamIDs.indexOf("1437"))); //2
+        bracket.add(teams.get(teamIDs.indexOf("1421"))); //15
+
+        //West Division
+        bracket.add(teams.get(teamIDs.indexOf("1332"))); //1
+        bracket.add(teams.get(teamIDs.indexOf("1221"))); //16
+        bracket.add(teams.get(teamIDs.indexOf("1386"))); //8
+        bracket.add(teams.get(teamIDs.indexOf("1153"))); //9
+        bracket.add(teams.get(teamIDs.indexOf("1124"))); //5
+        bracket.add(teams.get(teamIDs.indexOf("1463"))); //12
+        bracket.add(teams.get(teamIDs.indexOf("1181"))); //4
+        bracket.add(teams.get(teamIDs.indexOf("1423"))); //13
+        bracket.add(teams.get(teamIDs.indexOf("1400"))); //6
+        bracket.add(teams.get(teamIDs.indexOf("1320"))); //1
+        bracket.add(teams.get(teamIDs.indexOf("1401"))); //3
+        bracket.add(teams.get(teamIDs.indexOf("1453"))); //14
+        bracket.add(teams.get(teamIDs.indexOf("1333"))); //7
+        bracket.add(teams.get(teamIDs.indexOf("1433"))); //10
+        bracket.add(teams.get(teamIDs.indexOf("1328"))); //2
+        bracket.add(teams.get(teamIDs.indexOf("1167"))); //15
+
+        //East Division
+        bracket.add(teams.get(teamIDs.indexOf("1314"))); //1
+        bracket.add(teams.get(teamIDs.indexOf("1195"))); //16
+        bracket.add(teams.get(teamIDs.indexOf("1425"))); //8
+        bracket.add(teams.get(teamIDs.indexOf("1344"))); //9
+        bracket.add(teams.get(teamIDs.indexOf("1231"))); //5
+        bracket.add(teams.get(teamIDs.indexOf("1151"))); //12
+        bracket.add(teams.get(teamIDs.indexOf("1246"))); //4
+        bracket.add(teams.get(teamIDs.indexOf("1392"))); //13
+        bracket.add(teams.get(teamIDs.indexOf("1323"))); //6
+        bracket.add(teams.get(teamIDs.indexOf("1276"))); //11
+        bracket.add(teams.get(teamIDs.indexOf("1452"))); //3
+        bracket.add(teams.get(teamIDs.indexOf("1372"))); //14
+        bracket.add(teams.get(teamIDs.indexOf("1458"))); //7
+        bracket.add(teams.get(teamIDs.indexOf("1338"))); //10
+        bracket.add(teams.get(teamIDs.indexOf("1462"))); //2
+        bracket.add(teams.get(teamIDs.indexOf("1451"))); //15
+
+        //Midwest Division
+        bracket.add(teams.get(teamIDs.indexOf("1438"))); //1
+        bracket.add(teams.get(teamIDs.indexOf("1214"))); //16
+        bracket.add(teams.get(teamIDs.indexOf("1403"))); //8
+        bracket.add(teams.get(teamIDs.indexOf("1139"))); //9
+        bracket.add(teams.get(teamIDs.indexOf("1345"))); //5
+        bracket.add(teams.get(teamIDs.indexOf("1114"))); //12
+        bracket.add(teams.get(teamIDs.indexOf("1235"))); //4
+        bracket.add(teams.get(teamIDs.indexOf("1233"))); //13
+        bracket.add(teams.get(teamIDs.indexOf("1371"))); //6
+        bracket.add(teams.get(teamIDs.indexOf("1211"))); //11
+        bracket.add(teams.get(teamIDs.indexOf("1428"))); //3
+        bracket.add(teams.get(teamIDs.indexOf("1201"))); //14
+        bracket.add(teams.get(teamIDs.indexOf("1173"))); //7
+        bracket.add(teams.get(teamIDs.indexOf("1393"))); //10
+        bracket.add(teams.get(teamIDs.indexOf("1277"))); //2
+        bracket.add(teams.get(teamIDs.indexOf("1292"))); //15
     }
 }
