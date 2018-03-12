@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         System.out.println("LETS GET READY TO RUMBLE");
-        Scanner scanner = new Scanner(new File("RegularSeasonCompactResults.tsv"));
+        Scanner scanner = new Scanner(new File("RegularSeasonCompactResults_Prelim2018.csv"));
         Scanner scannerT = new Scanner(new File("Teams.tsv"));
         boolean flag = true;
         while(scannerT.hasNext()) {
@@ -38,50 +38,35 @@ public class Main {
             }
             String line = scanner.nextLine();
             Scanner scanner2 = new Scanner(line);
-            scanner2.useDelimiter("\t");
-            if (scanner2.next().equals("2017")) { //if only testing 2016
-                break;
-            }
-            scanner2.next();
-            String winningTeam = scanner2.next();
-            int winScore = scanner2.nextInt();
-            String losingTeam = scanner2.next();
-            int lossScore = scanner2.nextInt();
-            char loc = scanner2.next().charAt(0);
-            scanner2.close();
-            Team w;
-            Team l;
-            /*if (!teamIDs.contains(winningTeam)) {
-                w = new Team(winningTeam);
-                teams.add(w);
-                w.pointsFor += winScore;
-                w.pointsAgainst += lossScore;
-            } else {*/
+            scanner2.useDelimiter(",");
+            if (scanner2.next().equals("2018")) { //if only testing 2018
+                scanner2.next();
+                String winningTeam = scanner2.next();
+                int winScore = scanner2.nextInt();
+                String losingTeam = scanner2.next();
+                int lossScore = scanner2.nextInt();
+                char loc = scanner2.next().charAt(0);
+                scanner2.close();
+                Team w;
+                Team l;
                 w = teams.get(teamIDs.indexOf(winningTeam));
                 w.pointsFor += winScore;
                 w.pointsAgainst += lossScore;
                 w.games++;
-            //}
-            /*if (!teamIDs.contains(losingTeam)) {
-                l = new Team(losingTeam);
-                teams.add(l);
-                l.pointsFor += lossScore;
-                l.pointsAgainst += winScore;
-            } else {*/
                 l = teams.get(teamIDs.indexOf(losingTeam));
                 l.pointsFor += lossScore;
                 l.pointsAgainst += winScore;
                 l.games++;
-            //}
-            Elo.applyEloChange(w, winScore, l, lossScore, loc);
+                Elo.applyEloChange(w, winScore, l, lossScore, loc);
+            }
         }
         scanner.close();
         for (int i=0; i<teams.size(); i++) {
             statsEvaluator.ranking(0, teams.get(i));
         }
         statsEvaluator.rankPrint();
-        populateBracket2016();
-        statsEvaluator.predictBracket();
+        //populatebracket2018();
+        //statsEvaluator.predictBracket();
     }
 
     public static void populateBracket2016() {
@@ -158,5 +143,83 @@ public class Main {
         bracket.add(teams.get(teamIDs.indexOf("1393"))); //10
         bracket.add(teams.get(teamIDs.indexOf("1277"))); //2
         bracket.add(teams.get(teamIDs.indexOf("1292"))); //15
+    }
+
+    public static void populatebracket2018() {
+        // South Division
+        bracket.add(teams.get(teamIDs.indexOf("1438")));
+        bracket.add(teams.get(teamIDs.indexOf("1420")));
+        bracket.add(teams.get(teamIDs.indexOf("1166")));
+        bracket.add(teams.get(teamIDs.indexOf("1243")));
+        bracket.add(teams.get(teamIDs.indexOf("1246")));
+        bracket.add(teams.get(teamIDs.indexOf("1172")));
+        bracket.add(teams.get(teamIDs.indexOf("1112")));
+        bracket.add(teams.get(teamIDs.indexOf("1138")));
+        bracket.add(teams.get(teamIDs.indexOf("1274")));
+        bracket.add(teams.get(teamIDs.indexOf("1260")));
+        bracket.add(teams.get(teamIDs.indexOf("1397")));
+        bracket.add(teams.get(teamIDs.indexOf("1460")));
+        bracket.add(teams.get(teamIDs.indexOf("1305")));
+        bracket.add(teams.get(teamIDs.indexOf("1400")));
+        bracket.add(teams.get(teamIDs.indexOf("1153")));
+        bracket.add(teams.get(teamIDs.indexOf("1209")));
+
+        //West Division
+        bracket.add(teams.get(teamIDs.indexOf("1462")));
+        bracket.add(teams.get(teamIDs.indexOf("1300")));//NC Central
+        bracket.add(teams.get(teamIDs.indexOf("1411")));//Texas So.
+        bracket.add(teams.get(teamIDs.indexOf("1281")));
+        bracket.add(teams.get(teamIDs.indexOf("1199")));
+        bracket.add(teams.get(teamIDs.indexOf("1326")));
+        bracket.add(teams.get(teamIDs.indexOf("1355")));
+        bracket.add(teams.get(teamIDs.indexOf("1211")));
+        bracket.add(teams.get(teamIDs.indexOf("1422")));
+        bracket.add(teams.get(teamIDs.indexOf("1222")));
+        bracket.add(teams.get(teamIDs.indexOf("1361")));
+        bracket.add(teams.get(teamIDs.indexOf("1276")));
+        bracket.add(teams.get(teamIDs.indexOf("1285")));
+        bracket.add(teams.get(teamIDs.indexOf("1401")));
+        bracket.add(teams.get(teamIDs.indexOf("1344")));
+        bracket.add(teams.get(teamIDs.indexOf("1314")));
+        bracket.add(teams.get(teamIDs.indexOf("1252")));
+
+        //East Division
+        bracket.add(teams.get(teamIDs.indexOf("1437")));
+        bracket.add(teams.get(teamIDs.indexOf("1134"))); //LIU Brooklyn
+        bracket.add(teams.get(teamIDs.indexOf("1347"))); //Radford
+        bracket.add(teams.get(teamIDs.indexOf("1439")));
+        bracket.add(teams.get(teamIDs.indexOf("1104")));
+        bracket.add(teams.get(teamIDs.indexOf("1452")));
+        bracket.add(teams.get(teamIDs.indexOf("1293")));
+        bracket.add(teams.get(teamIDs.indexOf("1455")));
+        bracket.add(teams.get(teamIDs.indexOf("1267")));
+        bracket.add(teams.get(teamIDs.indexOf("1196")));
+        bracket.add(teams.get(teamIDs.indexOf("1382"))); //St. Bonaventure
+        bracket.add(teams.get(teamIDs.indexOf("1417"))); //UCLA
+        bracket.add(teams.get(teamIDs.indexOf("1403")));
+        bracket.add(teams.get(teamIDs.indexOf("1372")));
+        bracket.add(teams.get(teamIDs.indexOf("1116")));
+        bracket.add(teams.get(teamIDs.indexOf("1139")));
+        bracket.add(teams.get(teamIDs.indexOf("1345")));
+        bracket.add(teams.get(teamIDs.indexOf("1168")));
+
+        //Midwest Division
+        bracket.add(teams.get(teamIDs.indexOf("1242")));
+        bracket.add(teams.get(teamIDs.indexOf("1335")));
+        bracket.add(teams.get(teamIDs.indexOf("1371")));
+        bracket.add(teams.get(teamIDs.indexOf("1301")));
+        bracket.add(teams.get(teamIDs.indexOf("1155")));
+        bracket.add(teams.get(teamIDs.indexOf("1308")));
+        bracket.add(teams.get(teamIDs.indexOf("1120")));
+        bracket.add(teams.get(teamIDs.indexOf("1158")));
+        bracket.add(teams.get(teamIDs.indexOf("1395")));
+        bracket.add(teams.get(teamIDs.indexOf("1113"))); //Arizona St
+        bracket.add(teams.get(teamIDs.indexOf("1393"))); //Syracuse
+        bracket.add(teams.get(teamIDs.indexOf("1277")));
+        bracket.add(teams.get(teamIDs.indexOf("1137")));
+        bracket.add(teams.get(teamIDs.indexOf("1348")));
+        bracket.add(teams.get(teamIDs.indexOf("1328")));
+        bracket.add(teams.get(teamIDs.indexOf("1181")));
+        bracket.add(teams.get(teamIDs.indexOf("1233")));
     }
 }

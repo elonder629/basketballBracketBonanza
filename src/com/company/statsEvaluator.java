@@ -38,7 +38,7 @@ public class statsEvaluator {
             //x.scoreOfEvluator = fantasyBasketball()
         }
         //Main.teams.sort((team1, team2) -> Double.compare(team2.scoreOfEvluator, team1.scoreOfEvluator));
-        //Main.teams.sort((team1, team2) -> Integer.compare(team2.elo, team1.elo));
+        Main.teams.sort((team1, team2) -> Integer.compare(team2.elo, team1.elo));
 
     }
 
