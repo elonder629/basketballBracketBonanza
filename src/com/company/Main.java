@@ -30,6 +30,7 @@ public class Main {
         }
         scannerT.close();
         flag = true;
+        boolean flag2 = true;
         while(scanner.hasNextLine()) {
             if (flag) {
                 scanner.nextLine();
@@ -39,7 +40,38 @@ public class Main {
             String line = scanner.nextLine();
             Scanner scanner2 = new Scanner(line);
             scanner2.useDelimiter(",");
-            if (scanner2.next().equals("2018")) { //if only testing 2018
+            String x = scanner2.next();
+            if (x.equals("2017")) { //if only testing 2018
+                scanner2.next();
+                String winningTeam = scanner2.next();
+                int winScore = scanner2.nextInt();
+                String losingTeam = scanner2.next();
+                int lossScore = scanner2.nextInt();
+                char loc = scanner2.next().charAt(0);
+                scanner2.close();
+                Team w;
+                Team l;
+                w = teams.get(teamIDs.indexOf(winningTeam));
+                w.pointsFor += winScore;
+                w.pointsAgainst += lossScore;
+                w.games++;
+                l = teams.get(teamIDs.indexOf(losingTeam));
+                l.pointsFor += lossScore;
+                l.pointsAgainst += winScore;
+                l.games++;
+                Elo.applyEloChange(w, winScore, l, lossScore, loc);
+            } else if (x.equals("2018")) { //if only testing 2018
+                if (flag2) {
+                    for (int i=0; i<teams.size(); i++) {
+                        Team r = teams.get(i);
+                        if (r.elo > 1500) {
+                            r.elo = 1500 + ((r.elo-1500)/4);
+                        } else {
+                            r.elo = 1500 - ((1500-r.elo)/4);
+                        }
+                    }
+                    flag2 = false;
+                }
                 scanner2.next();
                 String winningTeam = scanner2.next();
                 int winScore = scanner2.nextInt();
@@ -167,7 +199,7 @@ public class Main {
         //West Division
         bracket.add(teams.get(teamIDs.indexOf("1462")));
         bracket.add(teams.get(teamIDs.indexOf("1300")));//NC Central
-        bracket.add(teams.get(teamIDs.indexOf("1411")));//Texas So.
+        //bracket.add(teams.get(teamIDs.indexOf("1411")));//Texas So.
         bracket.add(teams.get(teamIDs.indexOf("1281")));
         bracket.add(teams.get(teamIDs.indexOf("1199")));
         bracket.add(teams.get(teamIDs.indexOf("1326")));
@@ -185,7 +217,7 @@ public class Main {
 
         //East Division
         bracket.add(teams.get(teamIDs.indexOf("1437")));
-        bracket.add(teams.get(teamIDs.indexOf("1134"))); //LIU Brooklyn
+        //bracket.add(teams.get(teamIDs.indexOf("1134"))); //LIU Brooklyn
         bracket.add(teams.get(teamIDs.indexOf("1347"))); //Radford
         bracket.add(teams.get(teamIDs.indexOf("1439")));
         bracket.add(teams.get(teamIDs.indexOf("1104")));
@@ -195,7 +227,7 @@ public class Main {
         bracket.add(teams.get(teamIDs.indexOf("1267")));
         bracket.add(teams.get(teamIDs.indexOf("1196")));
         bracket.add(teams.get(teamIDs.indexOf("1382"))); //St. Bonaventure
-        bracket.add(teams.get(teamIDs.indexOf("1417"))); //UCLA
+        //bracket.add(teams.get(teamIDs.indexOf("1417"))); //UCLA
         bracket.add(teams.get(teamIDs.indexOf("1403")));
         bracket.add(teams.get(teamIDs.indexOf("1372")));
         bracket.add(teams.get(teamIDs.indexOf("1116")));
@@ -214,7 +246,7 @@ public class Main {
         bracket.add(teams.get(teamIDs.indexOf("1158")));
         bracket.add(teams.get(teamIDs.indexOf("1395")));
         bracket.add(teams.get(teamIDs.indexOf("1113"))); //Arizona St
-        bracket.add(teams.get(teamIDs.indexOf("1393"))); //Syracuse
+        //bracket.add(teams.get(teamIDs.indexOf("1393"))); //Syracuse
         bracket.add(teams.get(teamIDs.indexOf("1277")));
         bracket.add(teams.get(teamIDs.indexOf("1137")));
         bracket.add(teams.get(teamIDs.indexOf("1348")));
