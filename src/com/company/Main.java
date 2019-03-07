@@ -9,7 +9,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         System.out.println("LETS GET READY TO RUMBLE");
-        Scanner scanner = new Scanner(new File("RegularSeasonCompactResults.tsv"));
         Scanner scannerT = new Scanner(new File("Teams.tsv"));
         boolean flag = true;
         while(scannerT.hasNext()) {
@@ -29,6 +28,7 @@ public class Main {
         }
         scannerT.close();
         flag = true;
+        Scanner scanner = new Scanner(new File("RegularSeasonCompactResults.tsv"));
         while(scanner.hasNextLine()) {
             if (flag) {
                 scanner.nextLine();
